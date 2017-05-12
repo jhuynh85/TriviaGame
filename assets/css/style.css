@@ -7,7 +7,8 @@ body {
     color: #ffffff;
     background-size: auto;
     background-repeat: no-repeat;
-    background-position: center 25%;
+    background-position: center 75%;
+    background-attachment: fixed;
 }
 
 .textBox {
@@ -34,10 +35,16 @@ body {
 #A:active,#B:active,#C:active,#D:active
 {
     transform: translate(2px, 2px);
+    background-color: #3131ff;
 }
 
 #question {
     font-size: 2em;
+}
+
+#countdown {
+    width: 150px;
+    margin: 0 auto;
 }
 
 .letter {
@@ -46,4 +53,10 @@ body {
 
 #question {
     text-align: center;
+}
+
+.m-fadeOut {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 2000ms, opacity 2000ms;
 }

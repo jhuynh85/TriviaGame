@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- countDown 360 plugin -->
+    <script src="assets/js/jquery.countdown360.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Trivia Game</title>
 </head>
@@ -20,7 +24,12 @@
     <div class="container" id="content">
         <div id="startBtn">START</div>
     </div>
-    <div class="container">
+    <div class="container" id="questionContainer">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="countdown"></div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12 textBox" id="question">Question</div>
         </div>
