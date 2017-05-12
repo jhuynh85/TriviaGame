@@ -7,14 +7,13 @@ body {
     color: #ffffff;
     background-size: auto;
     background-repeat: no-repeat;
-    /* background-position: center center; */
     background-position: center 25%;
 }
 
 .textBox {
     border: 3px solid #ffffff;
     border-radius: 25px;
-    background-color: #010090;
+    background-color: #040367;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 10px;
@@ -23,6 +22,8 @@ body {
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 #A:hover,#B:hover,#C:hover,#D:hover {
@@ -32,13 +33,15 @@ body {
 
 #A:active,#B:active,#C:active,#D:active
 {
-    transform: translate(3px, 3px);
+    transform: translate(2px, 2px);
+}
+
+#question {
+    font-size: 2em;
 }
 
 .letter {
     color: #efa700;
-    font-weight: bold;
-    font-size: 1.5em;
 }
 
 #question {
