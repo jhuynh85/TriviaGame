@@ -3,13 +3,37 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <title></title>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Trivia Game</title>
 </head>
 
 <body>
+    <div class="container" id="content">
+        <div id="startBtn">START</div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 textBox" id="question">Question</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 textBox" id="A"><span class="letter">A:</span><span class="qString"></span></div>
+            <div class="col-sm-5 col-sm-offset-2 textBox " id="B"><span class="letter">B:</span><span class="qString"></span></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 textBox" id="C"><span class="letter">C:</span><span class="qString"></span></div>
+            <div class="col-sm-5 col-sm-offset-2 textBox" id="D"><span class="letter">D:</span><span class="qString"></span></div>
+        </div>
+    </div>
+    <script src="assets/js/app.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,46 @@
 * {
     box-sizing: border-box;
 }
+
+body {
+    background-image: url('../images/stage-bg.jpg');
+    color: #ffffff;
+    background-size: auto;
+    background-repeat: no-repeat;
+    /* background-position: center center; */
+    background-position: center 25%;
+}
+
+.textBox {
+    border: 3px solid #ffffff;
+    border-radius: 25px;
+    background-color: #010090;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 3px 2px 5px black;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+#A:hover,#B:hover,#C:hover,#D:hover {
+    cursor: pointer;
+    background-color: #3131ff;
+}
+
+#A:active,#B:active,#C:active,#D:active
+{
+    transform: translate(3px, 3px);
+}
+
+.letter {
+    color: #efa700;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#question {
+    text-align: center;
+}
