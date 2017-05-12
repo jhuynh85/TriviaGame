@@ -27,7 +27,7 @@ var game = {
 
     // Get questions from Open Trivia API
     getQuestions: function() {
-        var queryURL = "http://opentdb.com/api.php?amount=" + this.numQuestions + "&category=9&difficulty=easy&type=multiple";
+        var queryURL = "https://opentdb.com/api.php?amount=" + this.numQuestions + "&category=9&difficulty=easy&type=multiple";
 
         $.ajax({
             url: queryURL,
