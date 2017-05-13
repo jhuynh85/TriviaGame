@@ -192,7 +192,7 @@ var game = {
     // Display text boxes
     display: function() {
         $("#countdown, #rounds, .textBox").removeClass("m-fadeOut");
-        $(".textBox").css('visibility', 'visible');
+        $(".textBox, #countdown").css('visibility', 'visible');
         $("#rounds").text(this.roundCount + "/" + this.numQuestions);
 
         if (this.fiftyCount > 0){
