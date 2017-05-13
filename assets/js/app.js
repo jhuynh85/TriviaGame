@@ -232,7 +232,7 @@ var game = {
                 game.newQuestion();
                 game.displayQuestion();
                 game.outroFX.pause();
-            }, 2000);
+            }, 2500);
 
             // Remove click handler
             $(this).off();
