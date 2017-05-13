@@ -3,18 +3,17 @@
 }
 
 body {
-    background-image: url('../images/stage-bg.jpg');
+    background-image: url('../images/stage-dark.jpg');
     color: #ffffff;
-    background-size: auto;
     background-repeat: no-repeat;
-    background-position: center 75%;
+    background-position: center 50%;
     background-attachment: fixed;
 }
 
 .textBox {
     border: 3px solid #ffffff;
     border-radius: 25px;
-    background-color: #040367;
+    background-color: #2e2da2;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 10px;
@@ -29,13 +28,13 @@ body {
 
 #A:hover,#B:hover,#C:hover,#D:hover {
     cursor: pointer;
-    background-color: #3131ff;
+    background-color: #7776ff;
 }
 
 #A:active,#B:active,#C:active,#D:active
 {
     transform: translate(2px, 2px);
-    background-color: #3131ff;
+    background-color: #7776ff;
 }
 
 #question {
@@ -53,6 +52,18 @@ body {
 
 #question {
     text-align: center;
+}
+
+.selected {
+    background-color: #7776ff;
+}
+
+.correct {
+    background-color: #009c13;
+}
+
+.wrong {
+    background-color: #c30303;
 }
 
 .m-fadeOut {

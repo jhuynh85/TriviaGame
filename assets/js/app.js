@@ -1,9 +1,11 @@
 // Game object
 var game = {
+    divs: ["A", "B", "C", "D"], // Array holding the ids for each answer
     questionBank: null,
     question: null, // Variable holding the question string
     answers: [], // Array holding possible answers for current question
     correctIndex: null, // Which index the correct answer is stored in
+    selectedIndex: null, // Index of that answer the user picked
     correctNum: 0,
     incorrectNum: 0,
     unansweredNum: 0,
@@ -12,6 +14,7 @@ var game = {
     ready: false,
     buttonsActive: false, // Flags whether buttons are active or not
     timer: null,
+    correct: false,
 
     // Initializes game variables
     reset: function() {
@@ -45,7 +48,7 @@ var game = {
         });
     },
 
-    // Populates object variables with the question and answers
+    // Populates variables with the question and answers
     newQuestion: function() {
         var q = this.questionBank.pop();
         this.question = q.question;
@@ -56,7 +59,7 @@ var game = {
         this.answers.splice(this.correctIndex, 0, q.correct_answer);
     },
 
-    // Displays the current question
+    // Displays the current question and answers
     displayQuestion: function() {
         $("#question").html(this.question);
 
@@ -66,12 +69,11 @@ var game = {
             $("#" + boxes[i] + " > .qString").html(this.answers[i]);
         }
 
-        game.slideIn();
-
-        game.startTimer();  // Start timer
+        game.display();
+        game.startTimer(); // Start timer
 
         console.log("Answer: " + game.answers[game.correctIndex]);
-        this.buttonsActive = true; // Enable event handler
+        this.buttonsActive = true; // Enable event handler after everything is rendered
     },
 
     // Checks the user's answer, outOfTime should be 'true' if the user ran out of time
@@ -80,8 +82,8 @@ var game = {
         game.buttonsActive = false;
         game.timer.stop();
 
-        var answers = ["A", "B", "C", "D"];
-        var text;   
+        var text;
+        this.correct = false;
 
         // Check if user was out of time
         if (outOfTime) {
@@ -89,30 +91,57 @@ var game = {
             text = "OUT OF TIME!<p>The correct answer is '" + this.answers[this.correctIndex] + "'.</p>";
             this.unansweredNum++;
         } else {
+            // Keep selected answer highlighted
+            $("#" + id).addClass("selected");
+
             // Check if index of clicked div matches the index for correct answer
-            if (answers.indexOf(id) === this.correctIndex) {
+            this.selectedIndex = this.divs.indexOf(id);
+            if (this.selectedIndex === this.correctIndex) {
                 console.log("CORRECT!");
                 text = "CORRECT!";
                 this.correctNum++;
+                this.correct = true;
             } else {
                 console.log("WRONG!");
                 text = "WRONG!<p>The correct answer is '" + this.answers[this.correctIndex] + "'.</p>";
                 this.incorrectNum++;
+                $("#" + id).removeClass("selected");
+                this.correct = false;
             }
         }
 
-        this.slideOut();
+        this.fadeOut(id);
+
+        // Display result immediately if user ran out of time
+        if (outOfTime){
+             $("#question").html(text);
+        }
+        // Display result after a delay if user picked an answer
         setTimeout(function() {
+            var answerDiv = $("#" + game.divs[game.selectedIndex]);
             $("#question").html(text);
-            $("#question").show();
+            answerDiv.removeClass("selected");
+
+            // Add green/red coloring
+            if (game.correct) {
+                answerDiv.addClass("correct");
+            } else {
+                answerDiv.addClass("wrong");
+            }
 
             // Check if any questions left
             if (game.questionBank.length > 0) {
                 setTimeout(function() {
+                    var answerDiv = $("#" + game.divs[game.selectedIndex]);
+
+                    // Clear green/red coloring
+                    answerDiv.removeClass("correct");
+                    answerDiv.removeClass("wrong");
+
                     game.newQuestion();
                     game.displayQuestion();
-                    game.slideIn();
-                }, 5000);
+                    game.display();
+                }, 4000);
             }
 
             // Display scoreboard
@@ -127,27 +156,32 @@ var game = {
         this.timer.start();
     },
 
-
-    // Fades text boxes out
-    slideOut: function() {
+    // Fade answers out except for the given id
+    fadeOut: function(id) {
         $("#countdown").addClass("m-fadeOut");
-        $(".textBox").fadeOut(2000);
+        for (var i = 0; i < this.divs.length; i++) {
+            if (this.divs[i] != id) {
+                $("#" + this.divs[i]).addClass("m-fadeOut");
+            }
+        }
     },
 
-    // Fades text boxes in
-    slideIn: function() {
+    // Display text boxes
+    display: function() {
         $("#countdown").removeClass("m-fadeOut");
-        $(".textBox").fadeIn();
+        $(".textBox").removeClass("m-fadeOut");
     }
 };
 
 // GAME START
 $(document).ready(function() {
     // Initialize timer
+    // Note: I know how to use setInterval, but I'm using this jQuery plugin for the timer because
+    // it makes it easier to display a circular countdown timer
     game.timer = $("#countdown").countdown360({
         radius: 60,
         seconds: game.time,
-        fillStyle: '#3131ff',
+        fillStyle: '#2e2da2',
         strokeStyle: '#ffffff',
         fontSize: 50,
         fontColor: '#ffffff',
