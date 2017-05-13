@@ -15,6 +15,10 @@ var game = {
     buttonsActive: false, // Flags whether buttons are active or not
     timer: null,
     correct: false,
+    bgFX: null,
+    lockedInFX: null,
+    correctFX: null,
+    wrongFX: null,
 
     // Initializes game variables
     reset: function() {
@@ -71,6 +75,8 @@ var game = {
 
         game.display();
         game.startTimer(); // Start timer
+        game.bgFX.currentTime = 0;
+        game.bgFX.play();
 
         console.log("Answer: " + game.answers[game.correctIndex]);
         this.buttonsActive = true; // Enable event handler after everything is rendered
@@ -78,6 +84,8 @@ var game = {
 
     // Checks the user's answer, outOfTime should be 'true' if the user ran out of time
     checkAnswer: function(id, outOfTime) {
+        game.bgFX.pause();
+
         // Disable any additional events until this one is handled
         game.buttonsActive = false;
         game.timer.stop();
@@ -115,6 +123,7 @@ var game = {
         // Display result immediately if user ran out of time
         if (outOfTime){
              $("#question").html(text);
+             game.wrongFX.play();
         }
         // Display result after a delay if user picked an answer
         setTimeout(function() {
@@ -125,8 +134,10 @@ var game = {
             // Add green/red coloring
             if (game.correct) {
                 answerDiv.addClass("correct");
+                game.correctFX.play();
             } else {
                 answerDiv.addClass("wrong");
+                game.wrongFX.play();
             }
 
             // Check if any questions left
@@ -175,6 +186,12 @@ var game = {
 
 // GAME START
 $(document).ready(function() {
+    // Initialize audio
+    game.bgFX = new Audio('assets/audio/bg.mp3');
+    game.lockedInFX = new Audio('assets/audio/locked_in.mp3');
+    game.correctFX = new Audio('assets/audio/correct.mp3');
+    game.wrongFX = new Audio('assets/audio/wrong.mp3');
+
     // Initialize timer
     // Note: I know how to use setInterval, but I'm using this jQuery plugin for the timer because
     // it makes it easier to display a circular countdown timer
@@ -211,6 +228,7 @@ $(document).ready(function() {
     // User clicks an answer
     $("#A, #B, #C, #D").on('click', function() {
         if (game.buttonsActive) {
+            game.lockedInFX.play();
             game.checkAnswer($(this).attr('id'), false);
         }
     });
