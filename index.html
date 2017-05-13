@@ -12,19 +12,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <!-- countDown 360 plugin -->
     <script src="assets/js/jquery.countdown360.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Trivia Game</title>
 </head>
 
 <body>
-    <div class="container" id="content">
-        <div id="startBtn">START</div>
-    </div>
+
     <div class="container" id="questionContainer">
+        <img src="assets/images/logo.png" id="logo" alt="Who Wants to Be a Millionaire Logo">
         <div class="row">
             <div class="col-sm-12">
                 <div id="countdown"></div>
@@ -34,24 +31,32 @@
             <div class="col-sm-12 textBox" id="question">Question</div>
         </div>
         <div class="row">
-            <div class="col-sm-5 textBox" id="A">
+            <div class="col-sm-5 textBox clickable" id="A">
                 <span class="letter">A: </span>
                 <span class="qString"></span>
             </div>
-            <div class="col-sm-5 col-sm-offset-2 textBox " id="B">
+            <div class="col-sm-5 col-sm-offset-2 textBox clickable" id="B">
                 <span class="letter">B: </span>
                 <span class="qString"></span>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-5 textBox" id="C">
+            <div class="col-sm-5 textBox clickable" id="C">
                 <span class="letter">C: </span>
                 <span class="qString"></span>
             </div>
-            <div class="col-sm-5 col-sm-offset-2 textBox" id="D">
+            <div class="col-sm-5 col-sm-offset-2 textBox clickable" id="D">
                 <span class="letter">D: </span>
                 <span class="qString"></span>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="textBox clickable" id="fifty">50:50</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4 textBox clickable" id="rounds">Start</div>
         </div>
     </div>
     <script src="assets/js/app.js"></script>

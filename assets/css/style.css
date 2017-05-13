@@ -8,6 +8,15 @@ body {
     background-repeat: no-repeat;
     background-position: center 50%;
     background-attachment: fixed;
+    font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    width: 100%;
+}
+
+.container {
+    margin-top: 5%;
 }
 
 .textBox {
@@ -19,26 +28,38 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     box-shadow: 3px 2px 5px black;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    font-weight: bold;
     font-size: 1.5em;
+    visibility: hidden;
 }
 
-#A:hover,#B:hover,#C:hover,#D:hover {
+.clickable:hover {
     cursor: pointer;
     background-color: #7776ff;
 }
 
-#A:active,#B:active,#C:active,#D:active
-{
+.clickable:active {
     transform: translate(2px, 2px);
     background-color: #7776ff;
 }
 
 #question {
     font-size: 2em;
+    text-align: center;
+}
+
+#rounds {
+    font-size: 2.5em;
+    text-align: center;
+    visibility: visible;
+}
+
+#fifty {
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    border-radius: 100px/50px;
+    border: 5px solid white;
+    margin: 0 auto;
 }
 
 #countdown {
@@ -46,12 +67,17 @@ body {
     margin: 0 auto;
 }
 
-.letter {
-    color: #efa700;
+#logo {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 400px;
 }
 
-#question {
-    text-align: center;
+.letter {
+    color: #efa700;
 }
 
 .selected {
@@ -67,7 +93,7 @@ body {
 }
 
 .m-fadeOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 2000ms, opacity 2000ms;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 2000ms, opacity 2000ms;
 }
